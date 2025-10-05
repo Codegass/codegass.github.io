@@ -6,6 +6,32 @@ gsap.registerPlugin(CustomEase);
 CustomEase.create("bookEase", "0.25, 1, 0.5, 1");
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Load and display news
+  fetch('/news.json')
+    .then(response => response.json())
+    .then(data => {
+      const newsBanner = document.getElementById('newsBanner');
+
+      if (data.items && data.items.length > 0) {
+        // Display the first news item
+        const newsItem = data.items[0];
+        const newsLink = document.createElement('a');
+        newsLink.href = newsItem.url;
+        newsLink.className = 'news-button';
+        newsLink.textContent = newsItem.text;
+
+        newsBanner.appendChild(newsLink);
+
+        // Fade in the news banner
+        setTimeout(() => {
+          newsBanner.classList.add('visible');
+        }, 100);
+      }
+    })
+    .catch(error => {
+      console.log('No news to display');
+    });
+
   const books = document.querySelectorAll(".books__item");
 
   books.forEach((book) => {
