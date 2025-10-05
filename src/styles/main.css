@@ -331,7 +331,121 @@ span {
 }
 
 /* Responsive Design */
-/* Tablet and smaller screens */
+/* Extra large screens - scale up */
+@media screen and (min-width: 1920px) {
+  .books__container {
+    width: 220px;
+  }
+
+  .books__image--placeholder {
+    width: 220px;
+    height: 320px;
+  }
+
+  .books-wrapper {
+    gap: 3rem;
+  }
+
+  .left-text h2,
+  .right-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .left-text p,
+  .right-text p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .books__container {
+    width: 260px;
+  }
+
+  .books__image--placeholder {
+    width: 260px;
+    height: 380px;
+  }
+
+  .books-wrapper {
+    gap: 4rem;
+  }
+
+  .left-text h2,
+  .right-text h2 {
+    font-size: 1.75rem;
+  }
+
+  .left-text p,
+  .right-text p {
+    font-size: 1.1rem;
+  }
+
+  .top-left h2 {
+    font-size: 1.5rem;
+  }
+
+  .infinity-symbol {
+    font-size: 1.5rem;
+  }
+}
+
+/* Large screens - scale down books progressively */
+@media screen and (max-width: 1600px) {
+  .books__container {
+    width: 170px;
+  }
+
+  .books__image--placeholder {
+    width: 170px;
+    height: 245px;
+  }
+
+  .books-wrapper {
+    gap: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .books__container {
+    width: 160px;
+  }
+
+  .books__image--placeholder {
+    width: 160px;
+    height: 230px;
+  }
+
+  .books-wrapper {
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .books__container {
+    width: 150px;
+  }
+
+  .books__image--placeholder {
+    width: 150px;
+    height: 215px;
+  }
+
+  .books-wrapper {
+    gap: 1.2rem;
+  }
+
+  .main-content {
+    grid-template-columns: 1.5fr 6fr 1.5fr;
+  }
+
+  .left-text p,
+  .right-text p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablet - vertical layout trigger */
 @media screen and (max-width: 1024px) {
   .main-content {
     grid-template-columns: 1fr;
@@ -354,12 +468,12 @@ span {
   }
 
   .books__container {
-    width: 180px;
+    width: 160px;
   }
 
   .books__image--placeholder {
-    width: 180px;
-    height: 260px;
+    width: 160px;
+    height: 230px;
   }
 }
 
