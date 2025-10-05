@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article - Chen Hao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link rel="stylesheet" href="/src/styles/blog.css">
+  <!-- Highlight.js for syntax highlighting -->
+</head>
+<body>
+  <div class="article-container">
+    <!-- Navigation -->
+    <nav class="blog-nav">
+      <a href="blog.html" class="blog-nav__link">← Back to Blog</a>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article-header" id="article-header">
+      <!-- Dynamic content will be loaded here -->
+    </header>
+
+    <!-- Article Content -->
+    <article class="article-content" id="article-content">
+      <!-- Markdown content will be rendered here -->
+    </article>
+
+    <!-- Article Navigation -->
+    <nav class="article-nav">
+      <a href="blog.html" class="article-nav__back">← Back to all articles</a>
+    </nav>
+
+    <!-- Related Articles -->
+    <section class="related-articles" id="related-articles" style="display: none;">
+      <h2 class="related-articles__title">Related Articles</h2>
+      <div class="related-articles__grid" id="related-articles-grid">
+        <!-- Related articles will be loaded here -->
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-footnote@4/dist/markdown-it-footnote.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/python.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/typescript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/bash.min.js"></script>
+  <script type="module" src="/src/js/article.js"></script>
+</body>
+</html>

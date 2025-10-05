@@ -1,0 +1,27 @@
+{
+  "numpy": {
+    "package": "numpy",
+    "aliases": ["np"],
+    "methods": ["ndarray", "array", "zeros", "ones", "arange", "linspace", "reshape", "transpose", "dot", "sum", "mean", "std", "var", "max", "min", "argsort", "argmax", "argmin", "where", "concatenate", "stack", "hstack", "vstack", "diag", "eye", "meshgrid", "broadcast_to", "clip", "round", "floor", "ceil", "unique", "exp", "log", "power", "sqrt", "random", "randn", "rand", "randint", "choice", "normal", "uniform", "seed"]
+  },
+  "pandas": {
+    "package": "pandas",
+    "aliases": ["pd"],
+    "methods": ["DataFrame", "Series", "read_csv", "read_json", "read_excel", "to_csv", "to_json", "merge", "join", "concat", "groupby", "apply", "pivot", "pivot_table", "dropna", "fillna", "drop", "sort_values", "reset_index", "iloc", "loc", "head", "tail", "describe"]
+  },
+  "matplotlib": {
+    "package": "matplotlib",
+    "aliases": [],
+    "methods": ["pyplot", "plt", "figure", "subplot", "savefig", "show", "plot", "scatter", "hist", "bar", "xlabel", "ylabel", "title", "legend", "contour", "contourf"]
+  },
+  "torch": {
+    "package": "torch",
+    "aliases": [],
+    "methods": ["Tensor", "nn", "Module", "Linear", "Conv2d", "Conv1d", "Conv3d", "BatchNorm2d", "Dropout", "ReLU", "Sigmoid", "Softmax", "CrossEntropyLoss", "MSELoss", "Adam", "SGD", "DataLoader", "Dataset", "from_numpy", "cuda", "cpu", "no_grad", "backward", "softmax", "flatten", "view", "contiguous", "to", "load", "state_dict", "save", "forward", "c_"]
+  },
+  "sklearn": {
+    "package": "sklearn",
+    "aliases": [],
+    "methods": ["model_selection", "train_test_split", "cross_val_score", "metrics", "accuracy_score", "precision_score", "recall_score", "confusion_matrix", "preprocessing", "StandardScaler", "MinMaxScaler", "PCA"]
+  }
+}
