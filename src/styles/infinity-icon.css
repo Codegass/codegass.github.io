@@ -1,0 +1,53 @@
+/* Infinity Icon Styles */
+.infinity-icon {
+  width: 48px;
+  height: auto;
+}
+
+.infinity-path {
+  fill: none;
+  stroke-miterlimit: 10;
+  stroke-linecap: round;
+}
+
+.infinity-path-1 {
+  stroke-width: 1.75px;
+  opacity: 0.4;
+  animation: dash-reverse 1.75s ease-out infinite;
+}
+
+.infinity-path-2 {
+  stroke-width: 2.5px;
+  opacity: 0.3;
+  animation: dash 1.75s ease-out infinite;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 0, 158;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 79, 158;
+    stroke-dashoffset: -30px;
+  }
+  100% {
+    stroke-dasharray: 0, 158;
+    stroke-dashoffset: -158px;
+  }
+}
+
+@keyframes dash-reverse {
+  0% {
+    stroke-dasharray: 0, 158;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 79, 158;
+    stroke-dashoffset: 30px;
+  }
+  100% {
+    stroke-dasharray: 0, 158;
+    stroke-dashoffset: 158px;
+  }
+}

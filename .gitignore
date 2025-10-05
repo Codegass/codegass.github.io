@@ -23,4 +23,4 @@ dist-ssr
 *.sw?
 
 CLAUDE.md
-/example template
+example template/
