@@ -17,5 +17,10 @@ export default defineConfig({
         code: resolve(__dirname, 'src/pages/code.html')
       }
     }
+  },
+  resolve: {
+    alias: {
+      '/src': resolve(__dirname, 'src')
+    }
   }
 });
