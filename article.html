@@ -10,33 +10,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <!-- Highlight.js for syntax highlighting -->
-  <script type="module" crossorigin src="/assets/article-Cg0w6ifB.js"></script>
+  <script type="module" crossorigin src="/assets/article-Cy1JNJUY.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="modulepreload" crossorigin href="/assets/blog-posts-D8qwlW9W.js">
-  <link rel="stylesheet" crossorigin href="/assets/blog-posts-BtIK7T6A.css">
+  <link rel="modulepreload" crossorigin href="/assets/blog-posts-C7u7XMbR.js">
+  <link rel="stylesheet" crossorigin href="/assets/blog-posts-CvL38F6z.css">
   <link rel="stylesheet" crossorigin href="/assets/main-DakrXpBX.css">
 </head>
 <body>
-  <div class="article-container">
-    <!-- Navigation -->
-    <nav class="blog-nav">
-      <a href="blog.html" class="blog-nav__link">← Back to Blog</a>
-    </nav>
+  <!-- Navigation -->
+  <nav class="blog-nav">
+    <a href="blog.html" class="blog-nav__link">← Back to Blog</a>
+  </nav>
 
+  <!-- Main Content with Three-Column Layout -->
+  <main id="main" class="post">
     <!-- Article Header -->
-    <header class="article-header" id="article-header">
+    <header class="post-heading" id="article-header">
       <!-- Dynamic content will be loaded here -->
     </header>
 
-    <!-- Article Content -->
-    <article class="article-content" id="article-content">
-      <!-- Markdown content will be rendered here -->
-    </article>
-
-    <!-- Article Navigation -->
-    <nav class="article-nav">
-      <a href="blog.html" class="article-nav__back">← Back to all articles</a>
-    </nav>
+    <!-- Article Content with Left TOC -->
+    <div class="article-wrapper">
+      <!-- Left TOC will be inserted here by JavaScript -->
+      <nav id="left-toc" class="left-toc" aria-label="Table of contents"></nav>
+      <!-- Article content -->
+      <article class="content" id="article-content">
+        <!-- Markdown content will be rendered here -->
+      </article>
+    </div>
 
     <!-- Related Articles -->
     <section class="related-articles" id="related-articles" style="display: none;">
@@ -45,7 +46,7 @@
         <!-- Related articles will be loaded here -->
       </div>
     </section>
-  </div>
+  </main>
 
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
