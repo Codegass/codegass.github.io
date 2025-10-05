@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Build the project
+echo "Building project..."
 npm run build
 
-# Copy CNAME to dist
+echo "Copying CNAME..."
 cp CNAME dist/
 
-# Navigate to dist
+echo "Deploying to master branch..."
 cd dist
 
 # Initialize git if not already
@@ -19,9 +19,12 @@ fi
 git add -A
 
 # Commit
-git commit -m "Deploy to GitHub Pages"
+git commit -m "Deploy to GitHub Pages - $(date)"
 
-# Push to gh-pages branch (or master for user pages)
-git push -f git@github.com:codegass/codegass.github.io.git master
+# Push to master branch
+git push -f git@github.com:codegass/codegass.github.io.git master:master
 
 cd ..
+
+echo "Deployment complete!"
+echo "Your site will be available at https://chenhao.phd"
