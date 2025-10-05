@@ -657,6 +657,15 @@ span {
     padding: 0.75rem;
   }
 
+  .center-column {
+    width: 100%;
+    max-width: none;
+  }
+
+  .news-banner {
+    width: 100%;
+  }
+
   .books-wrapper {
     display: flex;
     flex-direction: column;
