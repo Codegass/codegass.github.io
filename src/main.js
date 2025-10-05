@@ -8,7 +8,12 @@ CustomEase.create("bookEase", "0.25, 1, 0.5, 1");
 document.addEventListener("DOMContentLoaded", function () {
   // Load and display news
   fetch('/news.json')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to load news');
+      }
+      return response.json();
+    })
     .then(data => {
       const newsBanner = document.getElementById('newsBanner');
 
@@ -22,14 +27,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         newsBanner.appendChild(newsLink);
 
+        // Force a reflow to ensure the animation works
+        newsBanner.offsetHeight;
+
         // Fade in the news banner
         setTimeout(() => {
           newsBanner.classList.add('visible');
         }, 100);
+      } else {
+        // Hide banner if no items
+        newsBanner.style.display = 'none';
       }
     })
     .catch(error => {
-      console.log('No news to display');
+      console.log('No news to display:', error);
+      const newsBanner = document.getElementById('newsBanner');
+      if (newsBanner) {
+        newsBanner.style.display = 'none';
+      }
     });
 
   const books = document.querySelectorAll(".books__item");
