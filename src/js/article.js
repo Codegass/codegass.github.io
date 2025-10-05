@@ -88,6 +88,12 @@ async function loadArticleContent(markdownFile) {
     const contentElement = document.getElementById('article-content');
     contentElement.innerHTML = htmlContent;
 
+    // Generate Table of Contents
+    generateTOC();
+
+    // Process sidenotes from footnotes
+    processSidenotes(contentElement);
+
     // Apply syntax highlighting with highlight.js
     setTimeout(async () => {
       if (window.hljs) {
@@ -187,6 +193,143 @@ async function loadArticleContent(markdownFile) {
     const contentElement = document.getElementById('article-content');
     contentElement.innerHTML = `<p style="text-align: center; color: var(--color-meta);">Error loading article: ${error.message}</p>`;
   }
+}
+
+// Generate Table of Contents
+function generateTOC() {
+  const tocNav = document.getElementById('left-toc');
+  const article = document.getElementById('article-content');
+
+  console.log('Generating TOC...');
+  console.log('TOC nav element:', tocNav);
+  console.log('Article element:', article);
+
+  if (!tocNav || !article) {
+    console.warn('TOC or article element not found');
+    return;
+  }
+
+  const headings = Array.from(article.querySelectorAll('h2'));
+  console.log('Found headings:', headings.length, headings);
+
+  if (!headings.length) {
+    console.warn('No headings found, hiding TOC');
+    tocNav.style.display = 'none';
+    return;
+  }
+
+  const tocList = document.createElement('ul');
+  tocList.className = 'toc-list';
+
+  // Add Introduction link (link to first paragraph)
+  const firstP = article.querySelector('p');
+  if (firstP) {
+    if (!firstP.id) {
+      firstP.id = 'introduction';
+    }
+    const introLi = document.createElement('li');
+    introLi.className = 'toc-item';
+    const introLink = document.createElement('a');
+    introLink.href = '#introduction';
+    introLink.textContent = 'Introduction';
+    introLi.appendChild(introLink);
+    tocList.appendChild(introLi);
+  }
+
+  // Generate headings links (only h2)
+  const usedIds = new Set();
+  headings.forEach(heading => {
+    // Generate ID if not present
+    if (!heading.id) {
+      let baseId = slugify(heading.textContent);
+      let id = baseId;
+      let counter = 2;
+      while (usedIds.has(id) || document.getElementById(id)) {
+        id = baseId + '-' + counter++;
+      }
+      heading.id = id;
+      usedIds.add(id);
+    } else {
+      usedIds.add(heading.id);
+    }
+
+    const li = document.createElement('li');
+    li.className = 'toc-item';
+
+    const link = document.createElement('a');
+    link.href = '#' + heading.id;
+    link.textContent = heading.textContent;
+    li.appendChild(link);
+    tocList.appendChild(li);
+  });
+
+  tocNav.appendChild(tocList);
+
+  // Add smooth scrolling for TOC links
+  tocList.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+}
+
+// Slugify text for IDs
+function slugify(text) {
+  return text.toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+}
+
+// Process footnotes into sidenotes
+function processSidenotes(contentElement) {
+  const footnotesSection = contentElement.querySelector('.footnotes');
+
+  if (!footnotesSection) return;
+
+  // Get all footnote items
+  const footnoteItems = footnotesSection.querySelectorAll('.footnotes-list li, .footnotes ol li');
+
+  // Get all footnote references in the text
+  const footnoteRefs = contentElement.querySelectorAll('.footnote-ref');
+
+  // Convert each footnote to a sidenote
+  footnoteRefs.forEach((ref, index) => {
+    const footnoteItem = footnoteItems[index];
+    if (!footnoteItem) return;
+
+    // Create sidenote element
+    const sidenote = document.createElement('span');
+    sidenote.className = 'sidenote';
+
+    // Copy footnote content (excluding the back reference)
+    const footnoteContent = footnoteItem.cloneNode(true);
+    const backref = footnoteContent.querySelector('.footnote-backref');
+    if (backref) {
+      backref.remove();
+    }
+
+    sidenote.innerHTML = footnoteContent.innerHTML;
+
+    // Insert sidenote after the reference
+    // The sidenote needs to be inserted right after the <sup> element
+    ref.parentNode.insertBefore(sidenote, ref.nextSibling);
+
+    // Update the ref to use sidenote-number class
+    ref.innerHTML = '<label class="sidenote-number"></label>';
+  });
+
+  // Hide the original footnotes section
+  footnotesSection.style.display = 'none';
 }
 
 // Load related articles
