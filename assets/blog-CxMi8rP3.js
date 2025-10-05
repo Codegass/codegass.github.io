@@ -1,4 +1,4 @@
-import"./modulepreload-polyfill-B5Qt9EMX.js";/* empty css             */import{b as o}from"./blog-posts-C_u72z4H.js";function s(t){const e=new Date(t),c={year:"numeric",month:"long",day:"numeric"};return e.toLocaleDateString("en-US",c)}function l(t){const e=s(t.date),c=t.tags.map(n=>`<span class="article-card__tag">${n}</span>`).join("");return`
+import"./modulepreload-polyfill-B5Qt9EMX.js";/* empty css             */import{b as o}from"./blog-posts-D8qwlW9W.js";function s(t){const e=new Date(t),c={year:"numeric",month:"long",day:"numeric"};return e.toLocaleDateString("en-US",c)}function l(t){const e=s(t.date),c=t.tags.map(n=>`<span class="article-card__tag">${n}</span>`).join("");return`
     <article class="article-card" onclick="window.location.href='article.html?id=${t.id}'" role="button" tabindex="0">
       <h2 class="article-card__title">${t.title}</h2>
       <div class="article-card__meta">
