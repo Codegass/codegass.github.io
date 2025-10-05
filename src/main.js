@@ -7,7 +7,7 @@ CustomEase.create("bookEase", "0.25, 1, 0.5, 1");
 
 document.addEventListener("DOMContentLoaded", function () {
   // Load and display news
-  fetch('/news.json')
+  fetch('/data/news.json')
     .then(response => {
       if (!response.ok) {
         throw new Error('Failed to load news');

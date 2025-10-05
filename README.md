@@ -5,18 +5,30 @@ A static website built with Vite featuring an interactive book navigation interf
 ## Project Structure
 
 ```
-├── index.html              # Home page with 4 book navigation
-├── about.html             # About Me section
-├── blog.html              # Blog section
-├── publication.html       # Publication section
-├── code.html              # Code section
-├── news.json              # News banner content (editable)
-├── src/
-│   ├── main.js           # Main JavaScript with GSAP animations
-│   └── styles/
-│       └── main.css      # Styles with 12-column grid system
-├── vite.config.js        # Vite configuration
-└── package.json          # Dependencies
+├── src/                    # Source code
+│   ├── pages/             # HTML pages
+│   │   ├── index.html     # Home page with 4 book navigation
+│   │   ├── about.html     # About Me section
+│   │   ├── blog.html      # Blog section
+│   │   ├── publication.html # Publication section
+│   │   └── code.html      # Code section
+│   ├── main.js            # Main JavaScript with GSAP animations
+│   └── styles/            # CSS styles
+│       ├── main.css       # Main styles with 12-column grid system
+│       └── infinity-icon.css # Infinity icon animation styles
+├── public/                # Static assets
+│   ├── data/              # Data files
+│   │   └── news.json      # News banner content (editable)
+│   ├── images/            # Image assets
+│   │   ├── cover-about-me.jpg
+│   │   ├── cover-blog.jpg
+│   │   ├── cover-code.jpg
+│   │   └── cover-pub.jpg
+│   └── CNAME              # GitHub Pages custom domain
+├── dist/                  # Build output (git ignored)
+├── vite.config.js         # Vite configuration
+├── package.json           # Dependencies
+└── deploy.sh              # Deployment script
 
 ## Development
 
@@ -54,11 +66,11 @@ The site is deployed to GitHub Pages using the custom domain `chenhao.phd`.
 
 ## Managing News Banner
 
-The news banner is displayed above the book navigation and can be easily updated by editing `news.json`:
+The news banner is displayed above the book navigation and can be easily updated by editing `public/data/news.json`:
 
 ### Show News
 
-Edit `news.json` with your news item:
+Edit `public/data/news.json` with your news item:
 
 ```json
 {

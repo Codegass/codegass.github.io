@@ -3,8 +3,7 @@
 echo "Building project..."
 npm run build
 
-echo "Copying CNAME..."
-cp CNAME dist/
+# CNAME is now in public/ and will be copied automatically by Vite during build
 
 echo "Deploying to master branch..."
 cd dist
