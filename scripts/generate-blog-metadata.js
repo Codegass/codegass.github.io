@@ -13,6 +13,7 @@ const __dirname = dirname(__filename);
 // Paths
 const BLOG_DIR = path.join(__dirname, '../public/blog');
 const OUTPUT_FILE = path.join(__dirname, '../src/data/blog-posts.json');
+const PUBLIC_OUTPUT_FILE = path.join(__dirname, '../public/data/blog-posts.json');
 
 // Generate slug from filename
 function generateSlug(filename) {
@@ -58,7 +59,7 @@ function parseMarkdownFiles() {
       id,
       title: data.title || 'Untitled Post',
       author: {
-        name: data.author || 'Chen Hao'
+        name: data.author || 'Chenhao Wei'
       },
       date: data.date || new Date().toISOString().split('T')[0],
       excerpt: data.excerpt || content.slice(0, 200).replace(/[#*`\n]/g, '').trim() + '...',
@@ -101,11 +102,19 @@ function generateBlogMetadata() {
       fs.mkdirSync(BLOG_DIR, { recursive: true });
     }
 
-    // Write JSON file
+    // Write JSON file to both locations
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(blogData, null, 2));
+
+    // Also write to public/data for production builds
+    const publicDataDir = path.dirname(PUBLIC_OUTPUT_FILE);
+    if (!fs.existsSync(publicDataDir)) {
+      fs.mkdirSync(publicDataDir, { recursive: true });
+    }
+    fs.writeFileSync(PUBLIC_OUTPUT_FILE, JSON.stringify(blogData, null, 2));
 
     console.log(`✓ Generated blog metadata with ${posts.length} posts`);
     console.log(`  Output: ${OUTPUT_FILE}`);
+    console.log(`  Public: ${PUBLIC_OUTPUT_FILE}`);
 
     // List generated posts
     if (posts.length > 0) {

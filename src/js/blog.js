@@ -1,5 +1,13 @@
 // Blog listing page functionality
-import blogData from '../data/blog-posts.json';
+
+// Load blog data from public directory
+let blogData = null;
+async function loadBlogData() {
+  if (blogData) return blogData;
+  const response = await fetch('/data/blog-posts.json');
+  blogData = await response.json();
+  return blogData;
+}
 
 // Format date to readable string
 function formatDate(dateString) {
@@ -44,7 +52,7 @@ let allPosts = [];
 // Load and display blog posts
 async function loadBlogPosts(filterQuery = '') {
   try {
-    const data = blogData;
+    const data = await loadBlogData();
 
     const articlesGrid = document.getElementById('articles-grid');
 

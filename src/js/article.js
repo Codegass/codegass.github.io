@@ -1,6 +1,14 @@
 // Individual article page functionality
-import blogData from '../data/blog-posts.json';
 import { enhancePythonHighlighting } from './python-highlight-enhancer.js';
+
+// Load blog data from public directory
+let blogData = null;
+async function loadBlogData() {
+  if (blogData) return blogData;
+  const response = await fetch('/data/blog-posts.json');
+  blogData = await response.json();
+  return blogData;
+}
 
 // Get URL parameters
 function getUrlParameter(name) {
@@ -32,7 +40,7 @@ function loadArticleHeader(post) {
   `;
 
   // Update page title
-  document.title = `${post.title} - Chen Hao`;
+  document.title = `${post.title} - Chenhao Wei`;
 }
 
 // Load article content
@@ -93,6 +101,9 @@ async function loadArticleContent(markdownFile) {
 
     // Process sidenotes from footnotes
     processSidenotes(contentElement);
+
+    // Render math with KaTeX
+    renderMath(contentElement);
 
     // Apply syntax highlighting with highlight.js
     setTimeout(async () => {
@@ -290,6 +301,30 @@ function slugify(text) {
     .replace(/-+/g, '-');
 }
 
+// Render math with KaTeX
+function renderMath(contentElement) {
+  // Wait for KaTeX to be loaded
+  const checkKaTeX = setInterval(() => {
+    if (window.renderMathInElement) {
+      clearInterval(checkKaTeX);
+
+      renderMathInElement(contentElement, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false,
+        trust: true
+      });
+    }
+  }, 100);
+
+  // Clear interval after 5 seconds if KaTeX doesn't load
+  setTimeout(() => clearInterval(checkKaTeX), 5000);
+}
+
 // Process footnotes into sidenotes
 function processSidenotes(contentElement) {
   const footnotesSection = contentElement.querySelector('.footnotes');
@@ -335,7 +370,7 @@ function processSidenotes(contentElement) {
 // Load related articles
 async function loadRelatedArticles(currentPostId, currentPostTags) {
   try {
-    const data = blogData;
+    const data = await loadBlogData();
 
     // Find related posts based on shared tags
     const relatedPosts = data.posts
@@ -381,7 +416,7 @@ async function loadArticle() {
   }
 
   try {
-    const data = blogData;
+    const data = await loadBlogData();
     const post = data.posts.find(p => p.id === articleId);
 
     if (!post) {

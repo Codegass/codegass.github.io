@@ -247,6 +247,9 @@ label.sidenote-number {
   max-width: var(--blog-max-width);
   margin: 0 auto;
   padding: var(--blog-spacing);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Blog Header */
@@ -780,40 +783,15 @@ label.sidenote-number {
 
 /* Navigation Bar for Blog */
 .blog-nav {
-  max-width: 950px;
-  margin: 0 auto 2rem;
+  width: 100%;
+  margin: 0 0 2rem 0;
   padding: 1.5rem 2rem;
   border-bottom: 1px solid var(--color-border);
-}
-
-/* Responsive navigation width */
-@media (min-width: 1200px) {
-  .blog-nav {
-    max-width: 970px;
-  }
-}
-
-@media (min-width: 1400px) {
-  .blog-nav {
-    max-width: 990px;
-  }
-}
-
-@media (min-width: 1600px) {
-  .blog-nav {
-    max-width: 1010px;
-  }
-}
-
-@media (min-width: 1800px) {
-  .blog-nav {
-    max-width: 1030px;
-  }
+  text-align: left;
 }
 
 @media (max-width: 1170px) {
   .blog-nav {
-    max-width: 100%;
     padding: 1.5rem 1.5rem;
   }
 }
@@ -824,6 +802,8 @@ label.sidenote-number {
   font-family: var(--secondary-font);
   font-size: var(--font-size-sm);
   transition: color 0.2s ease;
+  display: inline-block;
+  text-align: left;
 }
 
 .blog-nav__link:hover {
@@ -981,5 +961,79 @@ label.sidenote-number {
 
   .article-card__tags::before {
     display: none;
+  }
+}
+
+/* Math Display */
+#main.post article.content .katex-display {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: 1.5em;
+}
+
+#main.post article.content .katex,
+#main.post article.content .katex * {
+  font-size: inherit !important;
+}
+
+#main.post article.content .katex-display > .katex {
+  text-align: center;
+}
+
+#main.post article.content p .katex {
+  font-size: 1.4em !important;
+}
+
+/* Blog Footer */
+.blog-footer {
+  margin-top: auto;
+  padding: 3rem 0 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.blog-footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.blog-footer__text {
+  color: var(--color-meta);
+  font-size: 0.9rem;
+  margin: 0;
+  font-family: var(--font-serif, Georgia, serif);
+}
+
+.blog-footer__links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.blog-footer__link {
+  color: var(--color-meta);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-family: var(--font-serif, Georgia, serif);
+  transition: color 0.2s ease;
+}
+
+.blog-footer__link:hover {
+  color: var(--color-text-primary);
+}
+
+@media screen and (max-width: 768px) {
+  .blog-footer__content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .blog-footer__links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 1.5rem;
   }
 }

@@ -1,6 +1,6 @@
 ---
 title: "Simple Test Article"
-author: Chen Hao
+author: Chenhao Wei
 date: 2025-01-07
 tags:
   - test
@@ -80,9 +80,7 @@ This section covers more advanced markdown features.
 
 You can include inline math like \(E = mc^2\) or block equations:
 
-\[
-\int_{a}^{b} f(x) dx = F(b) - F(a)
-\]
+$E = mc^2$
 
 ### Tables
 
