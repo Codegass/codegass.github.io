@@ -4,7 +4,7 @@
       "id": "test-simple",
       "title": "Simple Test Article",
       "author": {
-        "name": "Chen Hao"
+        "name": "Chenhao Wei"
       },
       "date": "2025-01-07T00:00:00.000Z",
       "excerpt": "A simple test article to debug markdown rendering with table of contents.",
@@ -19,7 +19,7 @@
       "id": "welcome-to-my-blog",
       "title": "Welcome to My Research Blog",
       "author": {
-        "name": "Chen Hao"
+        "name": "Chenhao Wei"
       },
       "date": "2025-01-05T00:00:00.000Z",
       "excerpt": "An introduction to my research journey, exploring the intersection of technology, science, and innovation. Join me as I share insights from my academic pursuits.",
@@ -36,7 +36,7 @@
       "id": "understanding-neural-networks",
       "title": "Understanding Neural Networks: A Deep Dive",
       "author": {
-        "name": "Chen Hao"
+        "name": "Chenhao Wei"
       },
       "date": "2025-01-03T00:00:00.000Z",
       "excerpt": "Exploring the fundamental concepts of neural networks, their architecture, and how they learn from data to solve complex problems.",
@@ -50,6 +50,6 @@
       "featured": false
     }
   ],
-  "generated": "2025-10-05T23:56:50.486Z",
+  "generated": "2025-10-06T01:01:24.665Z",
   "total": 3
 }

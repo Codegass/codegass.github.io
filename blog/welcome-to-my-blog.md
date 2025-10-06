@@ -1,6 +1,6 @@
 ---
 title: Welcome to My Research Blog
-author: Chen Hao
+author: Chenhao Wei
 date: 2025-01-05
 tags:
   - introduction

@@ -1,6 +1,6 @@
 ---
 title: "Understanding Neural Networks: A Deep Dive"
-author: Chen Hao
+author: Chenhao Wei
 date: 2025-01-03
 tags:
   - machine learning
