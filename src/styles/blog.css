@@ -969,7 +969,7 @@ label.sidenote-number {
   margin: 1.5rem 0;
   overflow-x: auto;
   overflow-y: hidden;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 #main.post article.content .katex,
@@ -982,7 +982,7 @@ label.sidenote-number {
 }
 
 #main.post article.content p .katex {
-  font-size: 1.4em !important;
+  font-size: 1.2em !important;
 }
 
 /* Blog Footer */
